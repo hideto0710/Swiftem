@@ -13,6 +13,10 @@ public struct Swiftem {
     
     let token: String
     
+    public init(t: String) {
+        token = t
+    }
+    
     public func test(resource: String) -> Alamofire.Request {
         let headers = [
             "Authorization": token,
