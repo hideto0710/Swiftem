@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Swiftem
+//@testable import Swiftem
 
 class SwiftemTests: XCTestCase {
     

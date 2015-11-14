@@ -10,6 +10,7 @@
 		9EF951A61BF6BEEC0058A4BD /* Swiftem.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EF951A51BF6BEEC0058A4BD /* Swiftem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9EF951AD1BF6BEEC0058A4BD /* Swiftem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF951A21BF6BEEC0058A4BD /* Swiftem.framework */; settings = {ASSET_TAGS = (); }; };
 		9EF951B21BF6BEED0058A4BD /* SwiftemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951B11BF6BEED0058A4BD /* SwiftemTests.swift */; };
+		9EF951BD1BF6C64A0058A4BD /* Swiftem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		9EF951AC1BF6BEEC0058A4BD /* SwiftemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EF951B11BF6BEED0058A4BD /* SwiftemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftemTests.swift; sourceTree = "<group>"; };
 		9EF951B31BF6BEED0058A4BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swiftem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				9EF951A51BF6BEEC0058A4BD /* Swiftem.h */,
+				9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */,
 				9EF951A71BF6BEEC0058A4BD /* Info.plist */,
 			);
 			path = Swiftem;
@@ -142,6 +145,7 @@
 		9EF951991BF6BEEC0058A4BD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = InamuraHideto;
 				TargetAttributes = {
@@ -193,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EF951BD1BF6C64A0058A4BD /* Swiftem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +312,7 @@
 		9EF951B71BF6BEED0058A4BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -317,12 +323,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hideto0710.Swiftem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		9EF951B81BF6BEED0058A4BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
