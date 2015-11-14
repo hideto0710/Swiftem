@@ -10,18 +10,26 @@ import Foundation
 import Alamofire
 
 public struct Swiftem {
-    
-    let token: String
-    
-    public init(t: String) {
-        token = t
+    let t: String
+    public init(token: String) {
+        t = token
+    }
+}
+
+extension Swiftem {
+    public func keywords(id: Int) -> KeywordBuilder {
+        return KeywordBuilder(token: t, id: id)
     }
     
-    public func test(resource: String) -> Alamofire.Request {
-        let headers = [
-            "Authorization": token,
-            "Content-Type": "application/json"
-        ]
-        return Alamofire.request(.GET, resource, headers: headers)
+    public func keywords() -> KeywordBuilder {
+        return KeywordBuilder(token: t, id: nil)
+    }
+    
+    public func filters(id: Int) -> FilterBuilder {
+        return FilterBuilder(token: t, id: id)
+    }
+    
+    public func filters() -> FilterBuilder {
+        return FilterBuilder(token: t, id: nil)
     }
 }
