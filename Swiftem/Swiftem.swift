@@ -7,12 +7,17 @@
 //
 
 import Foundation
+import Alamofire
 
-public class Swiftem {
+public struct Swiftem {
     
-    public init() {}
+    let token: String
     
-    public func test() {
-        print("Swiftem")
+    public func test(resource: String) -> Alamofire.Request {
+        let headers = [
+            "Authorization": token,
+            "Content-Type": "application/json"
+        ]
+        return Alamofire.request(.GET, resource, headers: headers)
     }
 }
