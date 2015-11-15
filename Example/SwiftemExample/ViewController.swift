@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     @IBAction func keywords(sender: AnyObject) {
         swiftem.keywords(KeywordId).execute { res in
             res.either(
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
 
     @IBAction func docs(sender: AnyObject) {
         func getDocs(id: Int) {
-            swiftem.docs(id, categ: "all", date: ["20151115"]).execute { res in
+            swiftem.docs(id, categ: "all", date: ["20151115"]).readStatus(.Unread).execute { res in
                 res.either(
                     onLeft: { e in
                         self.resLabel.text =

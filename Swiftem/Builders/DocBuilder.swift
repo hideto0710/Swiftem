@@ -45,10 +45,22 @@ public typealias DocType = (
 )
 
 public class DocBuilder: EMRequest, EMQueryBuilder {
-    public typealias BuildType = (filterId: Int?, siteCateg: String?, date: [String]?)
+    public typealias BuildType = (
+        filterId: Int?,
+        siteCateg: String?,
+        date: [String]?,
+        query: Dictionary<String, Any?>
+    )
     public typealias ResponseType = [DocType]
     
-    var b = BuildType(nil, nil, nil)
+    var b = BuildType(nil, nil, nil, [
+        "read_status": nil,
+        "labels": nil,
+        "from": nil,
+        "size": nil,
+        "sort_by": nil,
+        "sort_order": nil
+    ])
     
     init(token: String, id: Int?, categ: String?, date: [String]?) {
         super.init(token: token)
@@ -68,9 +80,15 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
     
     public func execute(completionHandler: (response: Either<String, ResponseType>) -> Void) -> Alamofire.Request {
         let url = optUrl()!
+        var params = Dictionary<String, String>()
+        for (key, val) in self.b.query {
+            if let v = val {
+                params[key] = "\(v)"
+            }
+        }
         Logger.debug(url)
         self.headers["Authorization"] = t
-        return Alamofire.request(.GET, url, headers: self.headers).responseJSON { response in
+        return Alamofire.request(.GET, url, headers: self.headers, parameters: params).responseJSON { response in
             if let v = response.result.value {
                 if let results = JSON(v)["result"].array {
                     completionHandler(response: Either.Right(results.flatMap{self.parse($0)}))
@@ -141,5 +159,74 @@ extension DocBuilder {
     public func addDate(date: String) -> Self {
         self.b.date?.append(date)
         return self
+    }
+    
+    public func readStatus(s: ReadStauses) -> Self {
+        self.b.query["read_status"] = enum2ReadStatus(s)
+        return self
+    }
+    
+    public func from(from: Int) -> Self {
+        self.b.query["from"] = from
+        return self
+    }
+    
+    public func size(size: Int) -> Self {
+        self.b.query["size"] = size
+        return self
+    }
+    
+    public func sortBy(s: SortBy) -> Self {
+        self.b.query["sort_by"] = enum2SortBy(s)
+        return self
+    }
+    
+    public func sortOrder(s: SortOrder) -> Self {
+        self.b.query["sort_order"] = enum2SortOrder(s)
+        return self
+    }
+}
+
+extension DocBuilder {
+    public enum ReadStauses {
+        case All
+        case Read
+        case Unread
+        case EveryoneUnread
+    }
+    
+    private func enum2ReadStatus(e: ReadStauses) -> String {
+        switch e {
+        case .All: return "all"
+        case .Read: return "read"
+        case .Unread: return "unread"
+        case .EveryoneUnread: return "everyone_unread"
+        }
+    }
+    
+    public enum SortBy {
+        case CreatedAt
+        case Score
+        case ClusterSize
+    }
+    
+    private func enum2SortBy(e: SortBy) -> String {
+        switch e {
+        case .CreatedAt: return "created_at"
+        case .Score: return "score"
+        case .ClusterSize: return "cluster_size"
+        }
+    }
+    
+    public enum SortOrder {
+        case Asc
+        case Desc
+    }
+    
+    private func enum2SortOrder(e: SortOrder) -> String {
+        switch e {
+        case .Asc: return "asc"
+        case .Desc: return "desc"
+        }
     }
 }
