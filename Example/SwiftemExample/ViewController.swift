@@ -71,13 +71,14 @@ class ViewController: UIViewController {
 
     @IBAction func docs(sender: AnyObject) {
         func getDocs(id: Int) {
-            swiftem.docs(id, categ: "all", date: "20151115").execute { res in
+            swiftem.docs(id, categ: "all", date: ["20151115"]).execute { res in
                 res.either(
                     onLeft: { e in
                         self.resLabel.text =
                             self.resLabel.text! + "\(self.rStr)(e)"
                     },
                     onRight: { rs in
+                        print("==========[\(rs.count)]")
                         self.resLabel.text =
                             self.resLabel.text! + "\(self.rStr)\(rs.first!)"
                     }

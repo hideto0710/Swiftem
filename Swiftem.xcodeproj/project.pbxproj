@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9EDD5FB61BF71E97003C1D77 /* Swiftem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */; settings = {ASSET_TAGS = (); }; };
+		9EDD5FB61BF71E97003C1D77 /* Swiftem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */; };
 		9EDD5FD41BF723B9003C1D77 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD5FD21BF723B9003C1D77 /* Alamofire.framework */; };
 		9EDD5FD51BF723B9003C1D77 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD5FD31BF723B9003C1D77 /* SwiftyJSON.framework */; };
-		9EDD5FD91BF7418F003C1D77 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FD81BF7418F003C1D77 /* Builder.swift */; settings = {ASSET_TAGS = (); }; };
-		9EDD5FDA1BF7418F003C1D77 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FD81BF7418F003C1D77 /* Builder.swift */; settings = {ASSET_TAGS = (); }; };
-		9EDD5FDC1BF75D0C003C1D77 /* KeywordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FDB1BF75D0C003C1D77 /* KeywordBuilder.swift */; settings = {ASSET_TAGS = (); }; };
-		9EDD5FDD1BF75D0C003C1D77 /* KeywordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FDB1BF75D0C003C1D77 /* KeywordBuilder.swift */; settings = {ASSET_TAGS = (); }; };
+		9EDD5FD91BF7418F003C1D77 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FD81BF7418F003C1D77 /* Builder.swift */; };
+		9EDD5FDA1BF7418F003C1D77 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FD81BF7418F003C1D77 /* Builder.swift */; };
+		9EDD5FDC1BF75D0C003C1D77 /* KeywordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FDB1BF75D0C003C1D77 /* KeywordBuilder.swift */; };
+		9EDD5FDD1BF75D0C003C1D77 /* KeywordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FDB1BF75D0C003C1D77 /* KeywordBuilder.swift */; };
 		9EDD5FE61BF77920003C1D77 /* Swiftx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD5FE51BF77920003C1D77 /* Swiftx.framework */; };
-		9EDD5FEC1BF78096003C1D77 /* FilterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FEB1BF78096003C1D77 /* FilterBuilder.swift */; settings = {ASSET_TAGS = (); }; };
-		9EDD5FED1BF78096003C1D77 /* FilterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FEB1BF78096003C1D77 /* FilterBuilder.swift */; settings = {ASSET_TAGS = (); }; };
-		9EDD5FF01BF790FD003C1D77 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FEF1BF790FD003C1D77 /* Logger.swift */; settings = {ASSET_TAGS = (); }; };
-		9EDD5FF11BF790FD003C1D77 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FEF1BF790FD003C1D77 /* Logger.swift */; settings = {ASSET_TAGS = (); }; };
-		9EDD5FF31BF79289003C1D77 /* DocBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FF21BF79289003C1D77 /* DocBuilder.swift */; settings = {ASSET_TAGS = (); }; };
-		9EDD5FF41BF79289003C1D77 /* DocBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FF21BF79289003C1D77 /* DocBuilder.swift */; settings = {ASSET_TAGS = (); }; };
+		9EDD5FEC1BF78096003C1D77 /* FilterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FEB1BF78096003C1D77 /* FilterBuilder.swift */; };
+		9EDD5FED1BF78096003C1D77 /* FilterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FEB1BF78096003C1D77 /* FilterBuilder.swift */; };
+		9EDD5FF01BF790FD003C1D77 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FEF1BF790FD003C1D77 /* Logger.swift */; };
+		9EDD5FF11BF790FD003C1D77 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FEF1BF790FD003C1D77 /* Logger.swift */; };
+		9EDD5FF31BF79289003C1D77 /* DocBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FF21BF79289003C1D77 /* DocBuilder.swift */; };
+		9EDD5FF41BF79289003C1D77 /* DocBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDD5FF21BF79289003C1D77 /* DocBuilder.swift */; };
 		9EF951A61BF6BEEC0058A4BD /* Swiftem.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EF951A51BF6BEEC0058A4BD /* Swiftem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9EF951AD1BF6BEEC0058A4BD /* Swiftem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF951A21BF6BEEC0058A4BD /* Swiftem.framework */; settings = {ASSET_TAGS = (); }; };
+		9EF951AD1BF6BEEC0058A4BD /* Swiftem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF951A21BF6BEEC0058A4BD /* Swiftem.framework */; };
 		9EF951B21BF6BEED0058A4BD /* SwiftemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951B11BF6BEED0058A4BD /* SwiftemTests.swift */; };
-		9EF951BD1BF6C64A0058A4BD /* Swiftem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */; settings = {ASSET_TAGS = (); }; };
+		9EF951BD1BF6C64A0058A4BD /* Swiftem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 		9EDD5FD31BF723B9003C1D77 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9EDD5FD81BF7418F003C1D77 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Builder.swift; path = Builders/Builder.swift; sourceTree = "<group>"; };
 		9EDD5FDB1BF75D0C003C1D77 /* KeywordBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeywordBuilder.swift; path = Builders/KeywordBuilder.swift; sourceTree = "<group>"; };
-		9EDD5FDE1BF7722A003C1D77 /* Swiftz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swiftz.framework; path = Carthage/Build/iOS/Swiftz.framework; sourceTree = "<group>"; };
 		9EDD5FE51BF77920003C1D77 /* Swiftx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swiftx.framework; path = Carthage/Build/iOS/Swiftx.framework; sourceTree = "<group>"; };
 		9EDD5FEB1BF78096003C1D77 /* FilterBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterBuilder.swift; path = Builders/FilterBuilder.swift; sourceTree = "<group>"; };
 		9EDD5FEF1BF790FD003C1D77 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Utils/Logger.swift; sourceTree = "<group>"; };
@@ -82,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				9EDD5FE51BF77920003C1D77 /* Swiftx.framework */,
-				9EDD5FDE1BF7722A003C1D77 /* Swiftz.framework */,
 				9EDD5FD21BF723B9003C1D77 /* Alamofire.framework */,
 				9EDD5FD31BF723B9003C1D77 /* SwiftyJSON.framework */,
 			);

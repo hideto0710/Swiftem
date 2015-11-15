@@ -12,7 +12,7 @@ import SwiftyJSON
 import enum Swiftx.Either
 
 extension Swiftem {
-    public func docs(id: Int, categ: String, date: String) -> DocBuilder {
+    public func docs(id: Int, categ: String, date: [String]) -> DocBuilder {
         return DocBuilder(token: t, id: id, categ: categ, date: date)
     }
     public func docs() -> DocBuilder {
@@ -20,30 +20,47 @@ extension Swiftem {
     }
 }
 
-public typealias DocType = (id: String, title: String, detail: String, url: String, clusterId: String, pictureUrl: String?)
+public typealias LabelType = (
+    id: Int,
+    name: String,
+    style: String,
+    share: Int,
+    orderIndex: Int
+)
+
+public typealias DocType = (
+    id: String,
+    url: String,
+    title: String,
+    createdAt: String,
+    detail: String,
+    siteCateg: Swiftem.SiteCategs,
+    siteName: String,
+    author: String,
+    authorImageUrl: String?,
+    imageUrls: [String],
+    labels: [LabelType],
+    clusterId: String,
+    clusterSize: Int
+)
 
 public class DocBuilder: EMRequest, EMQueryBuilder {
-    public typealias BuildType = (filterId: Int?, siteCateg: String?, from: String?, to: String?)
+    public typealias BuildType = (filterId: Int?, siteCateg: String?, date: [String]?)
     public typealias ResponseType = [DocType]
     
-    var b = BuildType(nil, nil, nil, nil)
+    var b = BuildType(nil, nil, nil)
     
-    init(token: String, id: Int?, categ: String?, date: String?) {
+    init(token: String, id: Int?, categ: String?, date: [String]?) {
         super.init(token: token)
         self.b.filterId = id
         self.b.siteCateg = categ
-        self.b.from = date
+        self.b.date = date
     }
     
     private func optUrl() -> String? {
-        if let fId = self.b.filterId, sc = self.b.siteCateg {
-            if let from = self.b.from, to = self.b.to {
-                return "\(self.resource)/docs/\(fId.description)/\(sc)/\(from)/\(to)"
-            } else if let date = self.b.from {
-                return "\(self.resource)/docs/\(fId.description)/\(sc)/\(date)"
-            } else {
-                return nil
-            }
+        if let fId = self.b.filterId, sc = self.b.siteCateg, date = self.b.date {
+            let ds = date.joinWithSeparator(",")
+            return "\(self.resource)/docs/\(fId.description)/\(sc)/\(ds)"
         } else {
             return nil
         }
@@ -70,12 +87,35 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
 extension DocBuilder {
     private func parse(json: JSON) -> DocType? {
         if let id = json["id"].string,
-            title = json["title"].string,
-            detail = json["snippets"][0].string,
             url = json["url"].string,
-            clusterId = json["cluster_id"].string {
-                let pictureUrl = json["author_image_url"].string
-                return (id, title, detail, url, clusterId, pictureUrl)
+            title = json["title"].string,
+            createdAt = json["created_at"].string,
+            detail = json["snippets"][0].string,
+            siteCateg = json["site_categ"].string,
+            siteName = json["site_name"].string,
+            author = json["author"].string,
+            imageUrls = json["image_urls"].array,
+            labels = json["labels"].array,
+            clusterId = json["cluster_id"].string,
+            clusterSize = json["cluster_size"].int {
+                let ls: [LabelType] = labels.flatMap{self.parseLabels($0)}
+                let authorImageUrl = json["author_image_url"].string
+                let ius: [String] = imageUrls.flatMap{$0.string}
+                let sc = Swiftem.siteCateg2Enum(siteCateg)
+                return (id, url, title, createdAt, detail, sc, siteName, author,
+                    authorImageUrl, ius, ls, clusterId, clusterSize)
+        } else {
+            return nil
+        }
+    }
+    
+    private func parseLabels(json: JSON) -> LabelType? {
+        if let id = json["id"].int,
+            name = json["name"].string,
+            style = json["style"].string,
+            share = json["share"].int,
+            orderIndex = json["order_index"].int {
+                return (id, name, style, share, orderIndex)
         } else {
             return nil
         }
@@ -93,18 +133,13 @@ extension DocBuilder {
         return self
     }
     
-    public func date(date: String) -> Self {
-        self.b.from = date
+    public func date(date: [String]) -> Self {
+        self.b.date = date
         return self
     }
     
-    public func from(from: String) -> Self {
-        self.b.from = from
-        return self
-    }
-    
-    public func to(to: String) -> Self {
-        self.b.to = to
+    public func addDate(date: String) -> Self {
+        self.b.date?.append(date)
         return self
     }
 }
