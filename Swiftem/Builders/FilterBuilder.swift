@@ -11,6 +11,16 @@ import Alamofire
 import SwiftyJSON
 import enum Swiftx.Either
 
+extension Swiftem {
+    public func filters(id: Int) -> FilterBuilder {
+        return FilterBuilder(token: t, id: id)
+    }
+    
+    public func filters() -> FilterBuilder {
+        return FilterBuilder(token: t, id: nil)
+    }
+}
+
 public typealias FilterType = (id: Int ,name: String, keywordId: Int)
 
 public class FilterBuilder: EMRequest, EMQueryBuilder {

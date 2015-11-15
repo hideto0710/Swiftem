@@ -11,6 +11,16 @@ import Alamofire
 import SwiftyJSON
 import enum Swiftx.Either
 
+extension Swiftem {
+    public func keywords(id: Int) -> KeywordBuilder {
+        return KeywordBuilder(token: t, id: id)
+    }
+    
+    public func keywords() -> KeywordBuilder {
+        return KeywordBuilder(token: t, id: nil)
+    }
+}
+
 public typealias KeywordType = (id: Int ,name: String)
 
 public class KeywordBuilder: EMRequest, EMQueryBuilder {

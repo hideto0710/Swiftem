@@ -17,19 +17,40 @@ public struct Swiftem {
 }
 
 extension Swiftem {
-    public func keywords(id: Int) -> KeywordBuilder {
-        return KeywordBuilder(token: t, id: id)
+    public enum SiteCategs {
+        case TwoCH
+        case All
+        case BBS
+        case Blog
+        case Comm
+        case Corp
+        case EC
+        case ETC
+        case Job
+        case Mail
+        case Map
+        case News
+        case HP
+        case Twitter
     }
     
-    public func keywords() -> KeywordBuilder {
-        return KeywordBuilder(token: t, id: nil)
-    }
-    
-    public func filters(id: Int) -> FilterBuilder {
-        return FilterBuilder(token: t, id: id)
-    }
-    
-    public func filters() -> FilterBuilder {
-        return FilterBuilder(token: t, id: nil)
+    public static func siteCateg2Enum(siteStr: String) -> SiteCategs {
+        switch siteStr {
+        case "2ch": return SiteCategs.TwoCH
+        case "all": return SiteCategs.All
+        case "bbs": return SiteCategs.BBS
+        case "blog": return SiteCategs.Blog
+        case "comm": return SiteCategs.Comm
+        case "corp": return SiteCategs.Corp
+        case "ec": return SiteCategs.EC
+        case "etc": return SiteCategs.ETC
+        case "job": return SiteCategs.Job
+        case "mail": return SiteCategs.Mail
+        case "map": return SiteCategs.Map
+        case "news": return SiteCategs.News
+        case "hp": return SiteCategs.HP
+        case "twitter": return SiteCategs.Twitter
+        default: return SiteCategs.ETC
+        }
     }
 }
