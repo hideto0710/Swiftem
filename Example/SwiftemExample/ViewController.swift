@@ -79,6 +79,7 @@ class ViewController: UIViewController {
                     },
                     onRight: { rs in
                         print("==========[\(rs.count)]")
+                        print(rs.first!.id)
                         self.resLabel.text =
                             self.resLabel.text! + "\(self.rStr)\(rs.first!)"
                     }
@@ -111,6 +112,12 @@ class ViewController: UIViewController {
                     getFilters(rs.first!.id)
                 }
             )
+        }
+    }
+    
+    @IBAction func read(sender: AnyObject) {
+        swiftem.read(600342415, docIds: ["600342415-body-docs2015111512#http://nyatla.jp/nyanstock/archives/83576"]) { res in
+            res.either(onLeft: { e in print(e) }, onRight: { ok in print(ok) })
         }
     }
 }
