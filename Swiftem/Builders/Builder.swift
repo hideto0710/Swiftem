@@ -26,3 +26,47 @@ public class EMRequest {
     let resource = "https://web-v7.emining.jp/em"
     var headers = ["Content-Type": "application/json"]
 }
+
+public struct SearchBuilder {
+    public enum ReadStauses {
+        case All
+        case Read
+        case Unread
+        case EveryoneUnread
+        
+        func toString() -> String {
+            switch self {
+            case .All: return "all"
+            case .Read: return "read"
+            case .Unread: return "unread"
+            case .EveryoneUnread: return "everyone_unread"
+            }
+        }
+    }
+    
+    public enum SortBy {
+        case CreatedAt
+        case Score
+        case ClusterSize
+        
+        func toString() -> String {
+            switch self {
+            case .CreatedAt: return "created_at"
+            case .Score: return "score"
+            case .ClusterSize: return "cluster_size"
+            }
+        }
+    }
+    
+    public enum SortOrder {
+        case Asc
+        case Desc
+        
+        func toString() -> String {
+            switch self {
+            case .Asc: return "asc"
+            case .Desc: return "desc"
+            }
+        }
+    }
+}

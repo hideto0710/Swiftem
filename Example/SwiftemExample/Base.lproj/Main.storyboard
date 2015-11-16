@@ -40,7 +40,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awf-ky-BvL">
                                         <rect key="frame" x="0.0" y="60" width="540" height="30"/>
                                         <animations/>
-                                        <state key="normal" title="GET /docs/:filter_id/today"/>
+                                        <state key="normal" title="GET /docs/:filter_id/:site_categ/today"/>
                                         <connections>
                                             <action selector="docs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jmg-ms-b06"/>
                                         </connections>
@@ -53,6 +53,14 @@
                                             <action selector="read:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JLt-q8-e1k"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbK-AW-Q8C">
+                                        <rect key="frame" x="0.0" y="120" width="540" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="GET /counts/:filter_id/:site_categ/:from/:to"/>
+                                        <connections>
+                                            <action selector="counts:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hM3-WQ-ZN6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,10 +68,13 @@
                                     <constraint firstItem="xFM-HV-N9I" firstAttribute="top" secondItem="i8c-Tk-9A3" secondAttribute="top" id="19J-fU-vCJ"/>
                                     <constraint firstAttribute="trailing" secondItem="xFM-HV-N9I" secondAttribute="trailing" id="820-JI-wue"/>
                                     <constraint firstAttribute="trailing" secondItem="awf-ky-BvL" secondAttribute="trailing" id="IV4-qw-Kd9"/>
+                                    <constraint firstAttribute="trailing" secondItem="BbK-AW-Q8C" secondAttribute="trailing" id="O3E-Op-dr7"/>
                                     <constraint firstAttribute="trailing" secondItem="JZp-gE-RtO" secondAttribute="trailing" id="OMX-2T-QJd"/>
                                     <constraint firstItem="awf-ky-BvL" firstAttribute="top" secondItem="86j-VN-0ry" secondAttribute="bottom" id="Ok6-tw-LVw"/>
                                     <constraint firstItem="86j-VN-0ry" firstAttribute="leading" secondItem="i8c-Tk-9A3" secondAttribute="leading" id="P0K-JY-hXp"/>
                                     <constraint firstItem="awf-ky-BvL" firstAttribute="leading" secondItem="i8c-Tk-9A3" secondAttribute="leading" id="Ttr-tV-AP4"/>
+                                    <constraint firstItem="BbK-AW-Q8C" firstAttribute="leading" secondItem="i8c-Tk-9A3" secondAttribute="leading" id="ZbO-2w-i4N"/>
+                                    <constraint firstItem="BbK-AW-Q8C" firstAttribute="top" secondItem="JZp-gE-RtO" secondAttribute="bottom" id="aRD-4u-HMN"/>
                                     <constraint firstAttribute="height" constant="200" id="dht-dH-25S"/>
                                     <constraint firstItem="JZp-gE-RtO" firstAttribute="top" secondItem="awf-ky-BvL" secondAttribute="bottom" id="nrP-EM-hPh"/>
                                     <constraint firstItem="JZp-gE-RtO" firstAttribute="leading" secondItem="i8c-Tk-9A3" secondAttribute="leading" id="pE9-Vt-F1d"/>

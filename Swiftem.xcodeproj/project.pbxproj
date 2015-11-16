@@ -26,6 +26,7 @@
 		9EF951AD1BF6BEEC0058A4BD /* Swiftem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EF951A21BF6BEEC0058A4BD /* Swiftem.framework */; };
 		9EF951B21BF6BEED0058A4BD /* SwiftemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951B11BF6BEED0058A4BD /* SwiftemTests.swift */; };
 		9EF951BD1BF6C64A0058A4BD /* Swiftem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */; };
+		9EFC92381BFA1ADD00485583 /* CountBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFC92371BFA1ADD00485583 /* CountBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		9EF951B11BF6BEED0058A4BD /* SwiftemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftemTests.swift; sourceTree = "<group>"; };
 		9EF951B31BF6BEED0058A4BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swiftem.swift; sourceTree = "<group>"; };
+		9EFC92371BFA1ADD00485583 /* CountBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountBuilder.swift; path = Builders/CountBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				9EDD5FDB1BF75D0C003C1D77 /* KeywordBuilder.swift */,
 				9EDD5FEB1BF78096003C1D77 /* FilterBuilder.swift */,
 				9EDD5FF21BF79289003C1D77 /* DocBuilder.swift */,
+				9EFC92371BFA1ADD00485583 /* CountBuilder.swift */,
 			);
 			name = Builders;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				9EDD5FF01BF790FD003C1D77 /* Logger.swift in Sources */,
 				9EF951BD1BF6C64A0058A4BD /* Swiftem.swift in Sources */,
 				9EDD5FDC1BF75D0C003C1D77 /* KeywordBuilder.swift in Sources */,
+				9EFC92381BFA1ADD00485583 /* CountBuilder.swift in Sources */,
 				9EDD5FD91BF7418F003C1D77 /* Builder.swift in Sources */,
 				9EDD5FEC1BF78096003C1D77 /* FilterBuilder.swift in Sources */,
 			);

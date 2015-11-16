@@ -32,6 +32,25 @@ extension Swiftem {
         case News
         case HP
         case Twitter
+        
+        func toString() -> String {
+            switch self {
+            case .TwoCH: return "2ch"
+            case .All: return "all"
+            case .BBS: return "bbs"
+            case .Blog: return "blog"
+            case .Comm: return "comm"
+            case .Corp: return "corp"
+            case .EC: return "tc"
+            case .ETC: return "etc"
+            case .Job: return "job"
+            case .Mail: return "mail"
+            case .Map: return "map"
+            case .News: return "news"
+            case .HP: return "hp"
+            case .Twitter: return "twitter"
+            }
+        }
     }
     
     public static func siteCateg2Enum(siteStr: String) -> SiteCategs {
