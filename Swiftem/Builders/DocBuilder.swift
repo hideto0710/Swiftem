@@ -12,7 +12,7 @@ import SwiftyJSON
 import enum Swiftx.Either
 
 extension Swiftem {
-    public func docs(id: Int, categ: String, date: [String]) -> DocBuilder {
+    public func docs(id: Int, categ: Swiftem.SiteCategs, date: [String]) -> DocBuilder {
         return DocBuilder(token: t, id: id, categ: categ, date: date)
     }
     public func docs() -> DocBuilder {
@@ -47,9 +47,9 @@ public typealias DocType = (
 public class DocBuilder: EMRequest, EMQueryBuilder {
     public typealias BuildType = (
         filterId: Int?,
-        siteCateg: String?,
+        siteCateg: Swiftem.SiteCategs?,
         date: [String]?,
-        query: Dictionary<String, Any?>
+        query: Dictionary<String, String?>
     )
     public typealias ResponseType = [DocType]
     
@@ -62,7 +62,7 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
         "sort_order": nil
     ])
     
-    init(token: String, id: Int?, categ: String?, date: [String]?) {
+    init(token: String, id: Int?, categ: Swiftem.SiteCategs?, date: [String]?) {
         super.init(token: token)
         self.b.filterId = id
         self.b.siteCateg = categ
@@ -72,7 +72,7 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
     private func optUrl() -> String? {
         if let fId = self.b.filterId, sc = self.b.siteCateg, date = self.b.date {
             let ds = date.joinWithSeparator(",")
-            return "\(self.resource)/docs/\(fId.description)/\(sc)/\(ds)"
+            return "\(self.resource)/docs/\(fId.description)/\(sc.toString())/\(ds)"
         } else {
             return nil
         }
@@ -82,9 +82,7 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
         let url = optUrl()!
         var params = Dictionary<String, String>()
         for (key, val) in self.b.query {
-            if let v = val {
-                params[key] = "\(v)"
-            }
+            if let v = val { params[key] = v }
         }
         Logger.debug(url)
         self.headers["Authorization"] = t
@@ -146,8 +144,8 @@ extension DocBuilder {
         return self
     }
     
-    public func siteCateg(categ: String) -> Self {
-        self.b.siteCateg = categ
+    public func siteCateg(s: Swiftem.SiteCategs) -> Self {
+        self.b.siteCateg = s
         return self
     }
     
@@ -161,72 +159,28 @@ extension DocBuilder {
         return self
     }
     
-    public func readStatus(s: ReadStauses) -> Self {
-        self.b.query["read_status"] = enum2ReadStatus(s)
+    public func readStatus(s: SearchBuilder.ReadStauses) -> Self {
+        self.b.query["read_status"] = s.toString()
         return self
     }
     
     public func from(from: Int) -> Self {
-        self.b.query["from"] = from
+        self.b.query["from"] = from.description
         return self
     }
     
     public func size(size: Int) -> Self {
-        self.b.query["size"] = size
+        self.b.query["size"] = size.description
         return self
     }
     
-    public func sortBy(s: SortBy) -> Self {
-        self.b.query["sort_by"] = enum2SortBy(s)
+    public func sortBy(s: SearchBuilder.SortBy) -> Self {
+        self.b.query["sort_by"] = s.toString()
         return self
     }
     
-    public func sortOrder(s: SortOrder) -> Self {
-        self.b.query["sort_order"] = enum2SortOrder(s)
+    public func sortOrder(s: SearchBuilder.SortOrder) -> Self {
+        self.b.query["sort_order"] = s.toString()
         return self
-    }
-}
-
-extension DocBuilder {
-    public enum ReadStauses {
-        case All
-        case Read
-        case Unread
-        case EveryoneUnread
-    }
-    
-    private func enum2ReadStatus(e: ReadStauses) -> String {
-        switch e {
-        case .All: return "all"
-        case .Read: return "read"
-        case .Unread: return "unread"
-        case .EveryoneUnread: return "everyone_unread"
-        }
-    }
-    
-    public enum SortBy {
-        case CreatedAt
-        case Score
-        case ClusterSize
-    }
-    
-    private func enum2SortBy(e: SortBy) -> String {
-        switch e {
-        case .CreatedAt: return "created_at"
-        case .Score: return "score"
-        case .ClusterSize: return "cluster_size"
-        }
-    }
-    
-    public enum SortOrder {
-        case Asc
-        case Desc
-    }
-    
-    private func enum2SortOrder(e: SortOrder) -> String {
-        switch e {
-        case .Asc: return "asc"
-        case .Desc: return "desc"
-        }
     }
 }

@@ -71,7 +71,7 @@ class ViewController: UIViewController {
 
     @IBAction func docs(sender: AnyObject) {
         func getDocs(id: Int) {
-            swiftem.docs(id, categ: "all", date: ["20151115"]).readStatus(.Unread).execute { res in
+            swiftem.docs(id, categ: .All, date: ["20151115"]).readStatus(.Unread).execute { res in
                 res.either(
                     onLeft: { e in
                         self.resLabel.text =
@@ -110,6 +110,19 @@ class ViewController: UIViewController {
                 onRight: { rs in
                     self.resLabel.text = "\(rs)"
                     getFilters(rs.first!.id)
+                }
+            )
+        }
+    }
+    
+    @IBAction func counts(sender: AnyObject) {
+        swiftem.counts(451011470, categ: .All, from: "2015111500", to: "2015111700").readStatus(.Unread).execute { res in
+            res.either(
+                onLeft: { e in
+                    self.resLabel.text = e
+                },
+                onRight: { rs in
+                    self.resLabel.text = "\(rs)"
                 }
             )
         }
