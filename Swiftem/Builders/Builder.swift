@@ -34,7 +34,7 @@ public struct SearchBuilder {
         case Unread
         case EveryoneUnread
         
-        func toString() -> String {
+        public func toString() -> String {
             switch self {
             case .All: return "all"
             case .Read: return "read"
@@ -49,7 +49,7 @@ public struct SearchBuilder {
         case Score
         case ClusterSize
         
-        func toString() -> String {
+        public func toString() -> String {
             switch self {
             case .CreatedAt: return "created_at"
             case .Score: return "score"
@@ -62,7 +62,7 @@ public struct SearchBuilder {
         case Asc
         case Desc
         
-        func toString() -> String {
+        public func toString() -> String {
             switch self {
             case .Asc: return "asc"
             case .Desc: return "desc"

@@ -33,7 +33,7 @@ extension Swiftem {
         case HP
         case Twitter
         
-        func toString() -> String {
+        public func toString() -> String {
             switch self {
             case .TwoCH: return "2ch"
             case .All: return "all"
