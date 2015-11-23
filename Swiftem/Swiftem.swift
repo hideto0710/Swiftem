@@ -41,7 +41,7 @@ extension Swiftem {
             case .Blog: return "blog"
             case .Comm: return "comm"
             case .Corp: return "corp"
-            case .EC: return "tc"
+            case .EC: return "ec"
             case .ETC: return "etc"
             case .Job: return "job"
             case .Mail: return "mail"

@@ -10,7 +10,10 @@
 		9E0453001BFD0C8600310CC4 /* Swiftx.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9EDD5FE51BF77920003C1D77 /* Swiftx.framework */; };
 		9E0453011BFD0C8E00310CC4 /* Alamofire.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9EDD5FD21BF723B9003C1D77 /* Alamofire.framework */; };
 		9E0453021BFD0C9100310CC4 /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 9EDD5FD31BF723B9003C1D77 /* SwiftyJSON.framework */; };
+		9E0453071BFD45C000310CC4 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0453061BFD45C000310CC4 /* Builder.swift */; };
 		9E099DF41BF8F1E600649524 /* Read.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E099DF31BF8F1E600649524 /* Read.swift */; };
+		9EA831A51C01E3C7004DB8FD /* Mute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA831A41C01E3C7004DB8FD /* Mute.swift */; };
+		9EA831A71C01E459004DB8FD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA831A61C01E459004DB8FD /* Label.swift */; };
 		9EDD5FB61BF71E97003C1D77 /* Swiftem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */; };
 		9EDD5FD41BF723B9003C1D77 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD5FD21BF723B9003C1D77 /* Alamofire.framework */; };
 		9EDD5FD51BF723B9003C1D77 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD5FD31BF723B9003C1D77 /* SwiftyJSON.framework */; };
@@ -43,7 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E0453061BFD45C000310CC4 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Builder.swift; path = Builders/Builder.swift; sourceTree = "<group>"; };
 		9E099DF31BF8F1E600649524 /* Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Read.swift; sourceTree = "<group>"; };
+		9EA831A41C01E3C7004DB8FD /* Mute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mute.swift; path = Functions/Mute.swift; sourceTree = "<group>"; };
+		9EA831A61C01E459004DB8FD /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Label.swift; path = Functions/Label.swift; sourceTree = "<group>"; };
 		9EDD5FD21BF723B9003C1D77 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9EDD5FD31BF723B9003C1D77 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9EDD5FD81BF7418F003C1D77 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Builder.swift; path = Builders/Builder.swift; sourceTree = "<group>"; };
@@ -84,10 +90,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E0453051BFD459A00310CC4 /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				9E0453061BFD45C000310CC4 /* Builder.swift */,
+			);
+			name = Builders;
+			sourceTree = "<group>";
+		};
 		9E099DF21BF8F1C000649524 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
 				9E099DF31BF8F1E600649524 /* Read.swift */,
+				9EA831A41C01E3C7004DB8FD /* Mute.swift */,
+				9EA831A61C01E459004DB8FD /* Label.swift */,
 			);
 			name = Functions;
 			sourceTree = "<group>";
@@ -165,6 +181,7 @@
 		9EF951B01BF6BEED0058A4BD /* SwiftemTests */ = {
 			isa = PBXGroup;
 			children = (
+				9E0453051BFD459A00310CC4 /* Builders */,
 				9EF951B11BF6BEED0058A4BD /* SwiftemTests.swift */,
 				9EF951B31BF6BEED0058A4BD /* Info.plist */,
 			);
@@ -290,6 +307,8 @@
 				9EFC92381BFA1ADD00485583 /* CountBuilder.swift in Sources */,
 				9EDD5FD91BF7418F003C1D77 /* Builder.swift in Sources */,
 				9EDD5FEC1BF78096003C1D77 /* FilterBuilder.swift in Sources */,
+				9EA831A71C01E459004DB8FD /* Label.swift in Sources */,
+				9EA831A51C01E3C7004DB8FD /* Mute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +323,7 @@
 				9EDD5FED1BF78096003C1D77 /* FilterBuilder.swift in Sources */,
 				9EDD5FDA1BF7418F003C1D77 /* Builder.swift in Sources */,
 				9EDD5FDD1BF75D0C003C1D77 /* KeywordBuilder.swift in Sources */,
+				9E0453071BFD45C000310CC4 /* Builder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
