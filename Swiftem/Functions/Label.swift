@@ -17,9 +17,9 @@ extension Swiftem {
             return LabelFunction(token: t).labels(clientId, completionHandler: completionHandler)
     }
     
-    public func label(labelId: Int, keywordId: Int, docIds: [String],
+    public func label(action: LabelFunction.Action, labelId: Int, keywordId: Int, docIds: [String],
         completionHandler: (response: Either<String, Int>) -> Void) -> Alamofire.Request {
-            return LabelFunction(token: t).label(labelId, keywordId: keywordId, docIds: docIds, completionHandler: completionHandler)
+            return LabelFunction(token: t).label(action, labelId: labelId, keywordId: keywordId, docIds: docIds, completionHandler: completionHandler)
     }
 }
 
@@ -51,16 +51,28 @@ public class LabelFunction: EMRequest {
         }
     }
     
-    public func label(labelId: Int, keywordId: Int, docIds: [String], completionHandler: (response: Either<String, Int>) -> Void) -> Alamofire.Request {
+    public func label(action: Action, labelId: Int, keywordId: Int, docIds: [String], completionHandler: (response: Either<String, Int>) -> Void) -> Alamofire.Request {
         let url = "\(self.resource)/label/\(labelId.description)/\(keywordId.description)"
         Logger.debug(url)
         let params = [ "doc_ids": docIds ]
         self.headers["Authorization"] = t
-        return Alamofire.request(.POST, url, headers: self.headers, parameters: params, encoding: .JSON)
+        return Alamofire.request(action.toAlamofireAction(), url, headers: self.headers, parameters: params, encoding: .JSON)
             .response { _, response, _, _ in
                 if let r = response {
                     completionHandler(response: Either.Right(r.statusCode))
                 } else { completionHandler(response: Either.Left("no response.")) }
+        }
+    }
+    
+    public enum Action {
+        case Submit
+        case Delete
+        
+        public func toAlamofireAction() -> Alamofire.Method {
+            switch self {
+            case .Submit: return .POST
+            case .Delete: return .DELETE
+            }
         }
     }
     
@@ -74,9 +86,9 @@ extension LabelFunction {
             name = json["name"].string,
             style = json["style"].string,
             share = json["share"].int,
-            orderIndex = json["user_id"].int,
+            orderIndex = json["order_index"].int,
             createdAt = json["created_at"].string,
-            updatedAt = json["updates_at"].string {
+            updatedAt = json["updated_at"].string {
                 return (id, clientId, userId, name, style, share, orderIndex, createdAt, updatedAt)
         } else {
             return nil
