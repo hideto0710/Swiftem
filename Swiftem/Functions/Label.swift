@@ -21,23 +21,23 @@ extension Swiftem {
         completionHandler: (response: Either<String, Int>) -> Void) -> Alamofire.Request {
             return LabelFunction(token: t).label(action, labelId: labelId, keywordId: keywordId, docIds: docIds, completionHandler: completionHandler)
     }
+    
+    public typealias LabelDetailType = (
+        id: Int ,
+        clientId: Int,
+        userId: Int,
+        name: String,
+        style: String,
+        share: Int,
+        orderIndex: Int,
+        createdAt: String,
+        updatedAt: String
+    )
 }
-
-public typealias LabelDetailType = (
-    id: Int ,
-    clientId: Int,
-    userId: Int,
-    name: String,
-    style: String,
-    share: Int,
-    orderIndex: Int,
-    createdAt: String,
-    updatedAt: String
-)
 
 public class LabelFunction: EMRequest {
     
-    public func labels(clientId: Int, completionHandler: (response: Either<String, [LabelDetailType]>) -> Void) -> Alamofire.Request {
+    public func labels(clientId: Int, completionHandler: (response: Either<String, [Swiftem.LabelDetailType]>) -> Void) -> Alamofire.Request {
         let url = "\(self.resource)/labels/\(clientId.description)"
         Logger.debug(url)
         self.headers["Authorization"] = t
@@ -79,7 +79,7 @@ public class LabelFunction: EMRequest {
 }
 
 extension LabelFunction {
-    private func parse(json: JSON) -> LabelDetailType? {
+    private func parse(json: JSON) -> Swiftem.LabelDetailType? {
         if let id = json["id"].int,
             clientId = json["client_id"].int,
             userId = json["user_id"].int,
