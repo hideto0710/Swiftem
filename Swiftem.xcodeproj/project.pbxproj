@@ -89,13 +89,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9E0453051BFD459A00310CC4 /* Builders */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Builders;
-			sourceTree = "<group>";
-		};
 		9E099DF21BF8F1C000649524 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,13 +107,6 @@
 				9EDD5FD31BF723B9003C1D77 /* SwiftyJSON.framework */,
 			);
 			name = Carthage;
-			sourceTree = "<group>";
-		};
-		9EDD5FD61BF74140003C1D77 /* Readers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Readers;
 			sourceTree = "<group>";
 		};
 		9EDD5FD71BF7414B003C1D77 /* Builders */ = {
@@ -168,7 +154,6 @@
 				9E099DF21BF8F1C000649524 /* Functions */,
 				9EDD5FEE1BF790CF003C1D77 /* Utils */,
 				9EDD5FD71BF7414B003C1D77 /* Builders */,
-				9EDD5FD61BF74140003C1D77 /* Readers */,
 				9EF951A51BF6BEEC0058A4BD /* Swiftem.h */,
 				9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */,
 				9EF951A71BF6BEEC0058A4BD /* Info.plist */,
@@ -179,7 +164,6 @@
 		9EF951B01BF6BEED0058A4BD /* SwiftemTests */ = {
 			isa = PBXGroup;
 			children = (
-				9E0453051BFD459A00310CC4 /* Builders */,
 				9EF951B11BF6BEED0058A4BD /* LabelTests.swift */,
 				9EF951B31BF6BEED0058A4BD /* Info.plist */,
 			);

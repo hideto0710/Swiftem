@@ -19,13 +19,13 @@ extension Swiftem {
     public func keywords() -> KeywordBuilder {
         return KeywordBuilder(token: t, id: nil)
     }
+    
+    public typealias KeywordType = (id: Int ,name: String)
 }
-
-public typealias KeywordType = (id: Int ,name: String)
 
 public class KeywordBuilder: EMRequest, EMQueryBuilder {
     public typealias BuildType = (Int?)
-    public typealias ResponseType = [KeywordType]
+    public typealias ResponseType = [Swiftem.KeywordType]
     
     var k = BuildType()
     
@@ -49,7 +49,7 @@ public class KeywordBuilder: EMRequest, EMQueryBuilder {
 }
 
 extension KeywordBuilder {
-    private func parse(json: JSON) -> KeywordType? {
+    private func parse(json: JSON) -> Swiftem.KeywordType? {
         if let id = json["id"].int, name = json["word"].string {
             return (id, name)
         } else { return nil }

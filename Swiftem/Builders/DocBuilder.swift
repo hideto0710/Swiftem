@@ -15,34 +15,35 @@ extension Swiftem {
     public func docs(id: Int, categ: Swiftem.SiteCategs, date: [String]) -> DocBuilder {
         return DocBuilder(token: t, id: id, categ: categ, date: date)
     }
+    
     public func docs() -> DocBuilder {
         return DocBuilder(token: t, id: nil, categ: nil, date: nil)
     }
+    
+    public typealias LabelType = (
+        id: Int,
+        name: String,
+        style: String,
+        share: Int,
+        orderIndex: Int
+    )
+    
+    public typealias DocType = (
+        id: String,
+        url: String,
+        title: String,
+        createdAt: String,
+        snippets: [String],
+        siteCateg: Swiftem.SiteCategs,
+        siteName: String,
+        author: String,
+        authorImageUrl: String?,
+        imageUrls: [String],
+        labels: [LabelType],
+        clusterId: String,
+        clusterSize: Int
+    )
 }
-
-public typealias LabelType = (
-    id: Int,
-    name: String,
-    style: String,
-    share: Int,
-    orderIndex: Int
-)
-
-public typealias DocType = (
-    id: String,
-    url: String,
-    title: String,
-    createdAt: String,
-    detail: String,
-    siteCateg: Swiftem.SiteCategs,
-    siteName: String,
-    author: String,
-    authorImageUrl: String?,
-    imageUrls: [String],
-    labels: [LabelType],
-    clusterId: String,
-    clusterSize: Int
-)
 
 public class DocBuilder: EMRequest, EMQueryBuilder {
     public typealias BuildType = (
@@ -51,7 +52,7 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
         date: [String]?,
         query: Dictionary<String, String?>
     )
-    public typealias ResponseType = [DocType]
+    public typealias ResponseType = [Swiftem.DocType]
     
     var b = BuildType(nil, nil, nil, [
         "read_status": nil,
@@ -101,12 +102,12 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
 }
 
 extension DocBuilder {
-    private func parse(json: JSON) -> DocType? {
+    private func parse(json: JSON) -> Swiftem.DocType? {
         if let id = json["id"].string,
             url = json["url"].string,
             title = json["title"].string,
             createdAt = json["created_at"].string,
-            detail = json["snippets"][0].string,
+            snippets = json["snippets"].array,
             siteCateg = json["site_categ"].string,
             siteName = json["site_name"].string,
             author = json["author"].string,
@@ -114,18 +115,19 @@ extension DocBuilder {
             labels = json["labels"].array,
             clusterId = json["cluster_id"].string,
             clusterSize = json["cluster_size"].int {
-                let ls: [LabelType] = labels.flatMap{self.parseLabels($0)}
+                let ls: [Swiftem.LabelType] = labels.flatMap{self.parseLabels($0)}
                 let authorImageUrl = json["author_image_url"].string
+                let ss = snippets.flatMap({$0.string})
                 let ius: [String] = imageUrls.flatMap{$0.string}
                 let sc = Swiftem.siteCateg2Enum(siteCateg)
-                return (id, url, title, createdAt, detail, sc, siteName, author,
+                return (id, url, title, createdAt, ss, sc, siteName, author,
                     authorImageUrl, ius, ls, clusterId, clusterSize)
         } else {
             return nil
         }
     }
     
-    private func parseLabels(json: JSON) -> LabelType? {
+    private func parseLabels(json: JSON) -> Swiftem.LabelType? {
         if let id = json["id"].int,
             name = json["name"].string,
             style = json["style"].string,

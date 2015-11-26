@@ -15,15 +15,16 @@ extension Swiftem {
     public func counts(id: Int, categ: Swiftem.SiteCategs, from: String, to: String) -> countBuilder {
         return countBuilder(token: t, id: id, categ: categ, from: from, to: to)
     }
+    
     public func counts() -> countBuilder {
         return countBuilder(token: t, id: nil, categ: nil, from: nil, to: nil)
     }
+    
+    public typealias CountType = (
+        term: String,
+        count: Int
+    )
 }
-
-public typealias CountType = (
-    term: String,
-    count: Int
-)
 
 public class countBuilder: EMRequest, EMQueryBuilder {
     public typealias BuildType = (
@@ -33,7 +34,7 @@ public class countBuilder: EMRequest, EMQueryBuilder {
         to: String?,
         query: Dictionary<String, String?>
     )
-    public typealias ResponseType = [CountType]
+    public typealias ResponseType = [Swiftem.CountType]
     
     var b = BuildType(nil, nil, nil, nil, [
         "read_status": nil,
@@ -85,7 +86,7 @@ public class countBuilder: EMRequest, EMQueryBuilder {
 }
 
 extension countBuilder {
-    private func parse(json: JSON) -> CountType? {
+    private func parse(json: JSON) -> Swiftem.CountType? {
         if let term = json["term"].string, count = json["count"].int {
                 return (term, count)
         } else {

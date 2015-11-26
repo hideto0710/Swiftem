@@ -19,13 +19,14 @@ extension Swiftem {
     public func filters() -> FilterBuilder {
         return FilterBuilder(token: t, id: nil)
     }
-}
+    
+    public typealias FilterType = (id: Int ,name: String, keywordId: Int)
 
-public typealias FilterType = (id: Int ,name: String, keywordId: Int)
+}
 
 public class FilterBuilder: EMRequest, EMQueryBuilder {
     public typealias BuildType = (keywordId: Int?, userId: Int?, clientId: Int?)
-    public typealias ResponseType = [FilterType]
+    public typealias ResponseType = [Swiftem.FilterType]
     
     var k = BuildType(nil, nil, nil)
     
@@ -63,7 +64,7 @@ public class FilterBuilder: EMRequest, EMQueryBuilder {
 }
 
 extension FilterBuilder {
-    private func parse(json: JSON) -> FilterType? {
+    private func parse(json: JSON) -> Swiftem.FilterType? {
         if let id = json["id"].int,
             name = json["name"].string,
             keywordId = json["keyword_id"].int {
