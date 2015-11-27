@@ -23,7 +23,7 @@ class SwiftemTests: XCTestCase {
     }
     
     func testLabels() {
-        let clientId = 6 // 株式会社ホットリンク（全社用）
+        let clientId = 6
         let expectation = expectationWithDescription("")
         Swiftem(token: token).labels(clientId) { response in
             response.either(
@@ -40,8 +40,8 @@ class SwiftemTests: XCTestCase {
     }
     
     
-    let labelId = 1156083221 // "テスト②"
-    let keywordId = 1102924640 // "データ商用利用調査"
+    let labelId = 1156083221
+    let keywordId = 1102924640
     let docIds = ["1102924640-body-docs2015112416#http://www.keyman.or.jp/at/30006287/"]
     
     func testLabelSubmit() {

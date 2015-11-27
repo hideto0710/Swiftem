@@ -14,6 +14,7 @@
 		9E8A21FB1C0455C60078E717 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA831A61C01E459004DB8FD /* Label.swift */; };
 		9EA831A51C01E3C7004DB8FD /* Mute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA831A41C01E3C7004DB8FD /* Mute.swift */; };
 		9EA831A71C01E459004DB8FD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA831A61C01E459004DB8FD /* Label.swift */; };
+		9EDBA20E1C086DDE0014466D /* DocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBA20D1C086DDE0014466D /* DocTests.swift */; };
 		9EDD5FB61BF71E97003C1D77 /* Swiftem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EF951BC1BF6C64A0058A4BD /* Swiftem.swift */; };
 		9EDD5FD41BF723B9003C1D77 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD5FD21BF723B9003C1D77 /* Alamofire.framework */; };
 		9EDD5FD51BF723B9003C1D77 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EDD5FD31BF723B9003C1D77 /* SwiftyJSON.framework */; };
@@ -49,6 +50,7 @@
 		9E099DF31BF8F1E600649524 /* Read.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Read.swift; sourceTree = "<group>"; };
 		9EA831A41C01E3C7004DB8FD /* Mute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Mute.swift; path = Functions/Mute.swift; sourceTree = "<group>"; };
 		9EA831A61C01E459004DB8FD /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Label.swift; path = Functions/Label.swift; sourceTree = "<group>"; };
+		9EDBA20D1C086DDE0014466D /* DocTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocTests.swift; sourceTree = "<group>"; };
 		9EDD5FD21BF723B9003C1D77 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		9EDD5FD31BF723B9003C1D77 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9EDD5FD81BF7418F003C1D77 /* Builder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Builder.swift; path = Builders/Builder.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		9EF951B01BF6BEED0058A4BD /* SwiftemTests */ = {
 			isa = PBXGroup;
 			children = (
+				9EDBA20D1C086DDE0014466D /* DocTests.swift */,
 				9EF951B11BF6BEED0058A4BD /* LabelTests.swift */,
 				9EF951B31BF6BEED0058A4BD /* Info.plist */,
 			);
@@ -300,6 +303,7 @@
 			files = (
 				9EF951B21BF6BEED0058A4BD /* LabelTests.swift in Sources */,
 				9EDD5FF11BF790FD003C1D77 /* Logger.swift in Sources */,
+				9EDBA20E1C086DDE0014466D /* DocTests.swift in Sources */,
 				9EDD5FF41BF79289003C1D77 /* DocBuilder.swift in Sources */,
 				9EDD5FB61BF71E97003C1D77 /* Swiftem.swift in Sources */,
 				9EDD5FED1BF78096003C1D77 /* FilterBuilder.swift in Sources */,

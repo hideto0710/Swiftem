@@ -70,6 +70,14 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
         self.b.date = date
     }
     
+    init(token: String, id: Int?, categ: Swiftem.SiteCategs?, date: [String]?, query: Dictionary<String, String?>) {
+        super.init(token: token)
+        self.b.filterId = id
+        self.b.siteCateg = categ
+        self.b.date = date
+        self.b.query = query
+    }
+    
     private func optUrl() -> String? {
         if let fId = self.b.filterId, sc = self.b.siteCateg, date = self.b.date {
             let ds = date.joinWithSeparator(",")
@@ -97,7 +105,7 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
     }
     
     public func build() -> String {
-        return optUrl()!
+        return optUrl()! + self.b.query.description
     }
 }
 
@@ -141,48 +149,59 @@ extension DocBuilder {
 }
 
 extension DocBuilder {
-    public func filterId(id: Int) -> Self {
-        self.b.filterId = id
-        return self
+    public func filterId(id: Int) -> DocBuilder {
+        let b = self.b
+        return DocBuilder(token: self.t, id: id, categ: b.siteCateg, date: b.date, query: b.query)
     }
     
-    public func siteCateg(s: Swiftem.SiteCategs) -> Self {
-        self.b.siteCateg = s
-        return self
+    public func siteCateg(s: Swiftem.SiteCategs) -> DocBuilder {
+        let b = self.b
+        return DocBuilder(token: self.t, id: b.filterId, categ: s, date: b.date, query: b.query)
     }
     
-    public func date(date: [String]) -> Self {
-        self.b.date = date
-        return self
+    public func date(date: [String]) -> DocBuilder {
+        let b = self.b
+        return DocBuilder(token: self.t, id: b.filterId, categ: b.siteCateg, date: date, query: b.query)
     }
     
-    public func addDate(date: String) -> Self {
-        self.b.date?.append(date)
-        return self
+    public func addDate(date: String) -> DocBuilder {
+        var b = self.b
+        b.date?.append(date)
+        return DocBuilder(token: self.t, id: b.filterId, categ: b.siteCateg, date: b.date, query: b.query)
     }
     
-    public func readStatus(s: SearchBuilder.ReadStauses) -> Self {
-        self.b.query["read_status"] = s.toString()
-        return self
+    public func readStatus(s: SearchBuilder.ReadStauses) -> DocBuilder {
+        let b = self.b
+        var query = self.b.query
+        query["read_status"] = s.toString()
+        return DocBuilder(token: self.t, id: b.filterId, categ: b.siteCateg, date: b.date, query: query)
     }
     
-    public func from(from: Int) -> Self {
-        self.b.query["from"] = from.description
-        return self
+    public func from(from: Int) -> DocBuilder {
+        let b = self.b
+        var query = self.b.query
+        query["from"] = from.description
+        return DocBuilder(token: self.t, id: b.filterId, categ: b.siteCateg, date: b.date, query: query)
     }
     
-    public func size(size: Int) -> Self {
-        self.b.query["size"] = size.description
-        return self
+    public func size(size: Int) -> DocBuilder {
+        let b = self.b
+        var query = self.b.query
+        query["size"] = size.description
+        return DocBuilder(token: self.t, id: b.filterId, categ: b.siteCateg, date: b.date, query: query)
     }
     
-    public func sortBy(s: SearchBuilder.SortBy) -> Self {
-        self.b.query["sort_by"] = s.toString()
-        return self
+    public func sortBy(s: SearchBuilder.SortBy) -> DocBuilder {
+        let b = self.b
+        var query = self.b.query
+        query["sort_by"] =  s.toString()
+        return DocBuilder(token: self.t, id: b.filterId, categ: b.siteCateg, date: b.date, query: query)
     }
     
-    public func sortOrder(s: SearchBuilder.SortOrder) -> Self {
-        self.b.query["sort_order"] = s.toString()
-        return self
+    public func sortOrder(s: SearchBuilder.SortOrder) -> DocBuilder {
+        let b = self.b
+        var query = self.b.query
+        query["sort_order"] =  s.toString()
+        return DocBuilder(token: self.t, id: b.filterId, categ: b.siteCateg, date: b.date, query: query)
     }
 }

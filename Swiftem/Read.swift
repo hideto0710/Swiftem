@@ -14,7 +14,7 @@ import enum Swiftx.Either
 extension Swiftem {
     public func read(filterId: Int, docIds: [String],
         completionHandler: (response: Either<String, Int>) -> Void) -> Alamofire.Request {
-        return ReadFunction(token: t).read(filterId, docIds: docIds, completionHandler: completionHandler)
+            return ReadFunction(token: t).read(filterId, docIds: docIds, completionHandler: completionHandler)
     }
 }
 
