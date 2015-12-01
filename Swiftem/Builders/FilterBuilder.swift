@@ -21,7 +21,6 @@ extension Swiftem {
     }
     
     public typealias FilterType = (id: Int ,name: String, keywordId: Int)
-
 }
 
 public class FilterBuilder: EMRequest, EMQueryBuilder {
@@ -33,6 +32,13 @@ public class FilterBuilder: EMRequest, EMQueryBuilder {
     init(token: String, id: Int?) {
         super.init(token: token)
         self.k.keywordId = id
+    }
+    
+    init(token: String, id: Int?, clientId: Int?, userId: Int?) {
+        super.init(token: token)
+        self.k.keywordId = id
+        self.k.clientId = clientId
+        self.k.userId = userId
     }
     
     private func optUrl() -> String? {
@@ -76,18 +82,16 @@ extension FilterBuilder {
 }
 
 extension FilterBuilder {
-    public func keywordId(id: Int) -> Self {
-        self.k.keywordId = id
-        return self
+    public func keywordId(id: Int) -> FilterBuilder {
+        return FilterBuilder(token: self.t, id: id, clientId: self.k.clientId, userId: self.k.userId)
     }
     
-    public func userId(id: Int) -> Self {
+    public func userId(id: Int) -> FilterBuilder {
         self.k.userId = id
-        return self
+        return FilterBuilder(token: self.t, id: self.k.keywordId, clientId: self.k.clientId, userId: id)
     }
     
-    public func clientId(id: Int) -> Self {
-        self.k.clientId = id
-        return self
+    public func clientId(id: Int) -> FilterBuilder {
+        return FilterBuilder(token: self.t, id: self.k.keywordId, clientId: id, userId: self.k.userId)
     }
 }
