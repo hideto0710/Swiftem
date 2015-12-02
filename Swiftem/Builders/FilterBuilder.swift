@@ -13,11 +13,11 @@ import enum Swiftx.Either
 
 extension Swiftem {
     public func filters(id: Int) -> FilterBuilder {
-        return FilterBuilder(token: t, id: id)
+        return FilterBuilder(token: t, id: id, clientId: nil, userId: nil)
     }
     
     public func filters() -> FilterBuilder {
-        return FilterBuilder(token: t, id: nil)
+        return FilterBuilder(token: t, id: nil, clientId: nil, userId: nil)
     }
     
     public typealias FilterType = (id: Int ,name: String, keywordId: Int)
@@ -28,11 +28,6 @@ public class FilterBuilder: EMRequest, EMQueryBuilder {
     public typealias ResponseType = [Swiftem.FilterType]
     
     var k = BuildType(nil, nil, nil)
-    
-    init(token: String, id: Int?) {
-        super.init(token: token)
-        self.k.keywordId = id
-    }
     
     init(token: String, id: Int?, clientId: Int?, userId: Int?) {
         super.init(token: token)

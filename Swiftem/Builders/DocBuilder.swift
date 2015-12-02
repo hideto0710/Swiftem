@@ -13,11 +13,11 @@ import enum Swiftx.Either
 
 extension Swiftem {
     public func docs(id: Int, categ: Swiftem.SiteCategs, date: [String]) -> DocBuilder {
-        return DocBuilder(token: t, id: id, categ: categ, date: date)
+        return DocBuilder(token: t, id: id, categ: categ, date: date, query: Dictionary<String, String?>())
     }
     
     public func docs() -> DocBuilder {
-        return DocBuilder(token: t, id: nil, categ: nil, date: nil)
+        return DocBuilder(token: t, id: nil, categ: nil, date: nil, query: Dictionary<String, String?>())
     }
     
     public typealias LabelType = (
@@ -62,13 +62,6 @@ public class DocBuilder: EMRequest, EMQueryBuilder {
         "sort_by": nil,
         "sort_order": nil
     ])
-    
-    init(token: String, id: Int?, categ: Swiftem.SiteCategs?, date: [String]?) {
-        super.init(token: token)
-        self.b.filterId = id
-        self.b.siteCateg = categ
-        self.b.date = date
-    }
     
     init(token: String, id: Int?, categ: Swiftem.SiteCategs?, date: [String]?, query: Dictionary<String, String?>) {
         super.init(token: token)
